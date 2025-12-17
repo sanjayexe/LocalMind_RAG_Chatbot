@@ -118,11 +118,23 @@ def main():
     # Sidebar for settings and status
     with st.sidebar:
         st.header("Settings")
+        
+        # API Configuration
+        api_url = st.text_input(
+            "Backend API URL",
+            value="https://nonconfidentially-preallowable-jerri.ngrok-free.dev ",
+            help="For local use: http://localhost:8000\nFor Ngrok: https://nonconfidentially-preallowable-jerri.ngrok-free.dev "
+        )
+        
         temperature = st.slider(
             "Temperature", 
             0.0, 1.0, 0.7, 0.1,
             help="Higher values make output more random, lower values more focused"
         )
+    
+    # Update global API URL
+    global API_URL
+    API_URL = api_url
         
 
 
